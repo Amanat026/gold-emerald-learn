@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import logo from "@/assets/logo.png";
-import founder from "@/assets/founder.jpg";
+import founderAsset from "@/assets/founder.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -161,7 +161,7 @@ function Index() {
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-2 sm:py-24">
             <div className="relative">
               <img
-                src={founder}
+                src={founderAsset.url}
                 alt="Amanat Ullah, Founder and CEO of English Core AI Lab"
                 loading="lazy"
                 width={900}
@@ -183,6 +183,16 @@ function Index() {
                 His vision is a platform where a six-year-old, a Class Ten examinee and a working
                 professional each find a path that fits — grounded in values, driven by intelligence.
               </p>
+              <ul className="mt-6 space-y-2 text-sm text-foreground/75">
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0 text-primary" />
+                  <a href="tel:+8801608010181" className="hover:text-primary transition-colors">01608-010181</a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 shrink-0 text-primary" />
+                  <a href="mailto:amanatullah263@gmail.com" className="hover:text-primary transition-colors">amanatullah263@gmail.com</a>
+                </li>
+              </ul>
               <a href="#contact" className="btn-cta mt-8">
                 Talk to our team
               </a>
@@ -267,11 +277,11 @@ function Index() {
             <ul className="mt-4 space-y-3 text-sm text-foreground/70">
               <li className="flex gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                hello@englishcoreailab.com
+                <a href="mailto:englishcore26@gmail.com" className="hover:text-primary transition-colors">englishcore26@gmail.com</a>
               </li>
               <li className="flex gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                +880 1000 000000
+                <a href="tel:+8801608010181" className="hover:text-primary transition-colors">+880 1608-010181</a>
               </li>
               <li className="flex gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
