@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import logo from "@/assets/logo.png";
-import founder from "@/assets/founder.jpg";
+import founderAsset from "@/assets/founder.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
