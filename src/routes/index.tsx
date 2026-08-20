@@ -12,6 +12,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
+import { ContactForm } from "@/components/contact-form";
 import logoAsset from "@/assets/logo.png.asset.json";
 import founderAsset from "@/assets/founder.jpg.asset.json";
 
@@ -86,14 +87,7 @@ function Index() {
         {/* Hero */}
         <section id="home" className="veil relative overflow-hidden">
           <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:py-28">
-            <img
-              src={logoAsset.url}
-              alt="English Core AI Lab logo"
-              width={512}
-              height={512}
-              className="mx-auto h-24 w-24 sm:h-32 sm:w-32"
-            />
-            <p className="mt-6 text-xs tracking-[0.35em] text-primary uppercase">
+            <p className="text-xs tracking-[0.35em] text-primary uppercase">
               English Core AI Lab
             </p>
             <h1 className="mx-auto mt-4 max-w-3xl text-4xl leading-tight font-semibold sm:text-6xl">
@@ -221,18 +215,25 @@ function Index() {
 
         {/* Contact CTA */}
         <section id="contact" className="veil border-t border-border/60">
-          <div className="mx-auto max-w-3xl px-5 py-20 text-center sm:py-24">
-            <h2 className="text-3xl font-semibold sm:text-4xl">Start your English journey today</h2>
-            <p className="mt-4 text-foreground/80">
-              Tell us your goal and we will place you in the right program within 24 hours.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a href="mailto:hello@englishcoreailab.com" className="btn-cta">
-                Join Now
-              </a>
-              <a href="tel:+8801000000000" className="btn-ghost-gold">
-                Call us
-              </a>
+          <div className="mx-auto max-w-3xl px-5 py-20 sm:py-24">
+            <div className="text-center">
+              <h2 className="text-3xl font-semibold sm:text-4xl">
+                Start your English journey today
+              </h2>
+              <p className="mt-4 text-foreground/80">
+                Tell us your goal and we will place you in the right program within 24 hours.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="mailto:englishcore26@gmail.com" className="btn-ghost-gold">
+                  englishcore26@gmail.com
+                </a>
+                <a href="tel:+8801608010181" className="btn-ghost-gold">
+                  +880 1608-010181
+                </a>
+              </div>
+            </div>
+            <div className="mt-12 rounded-xl border border-border bg-card p-6 sm:p-9">
+              <ContactForm />
             </div>
           </div>
         </section>
