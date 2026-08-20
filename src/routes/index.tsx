@@ -277,11 +277,11 @@ function Index() {
             <ul className="mt-4 space-y-3 text-sm text-foreground/70">
               <li className="flex gap-2">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                hello@englishcoreailab.com
+                <a href="mailto:englishcore26@gmail.com" className="hover:text-primary transition-colors">englishcore26@gmail.com</a>
               </li>
               <li className="flex gap-2">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                +880 1000 000000
+                <a href="tel:+8801608010181" className="hover:text-primary transition-colors">+880 1608-010181</a>
               </li>
               <li className="flex gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
