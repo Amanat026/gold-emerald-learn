@@ -16,16 +16,23 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3 lg:flex lg:justify-between">
-        <a href="#home" className="flex min-w-0 items-center gap-3">
-          <img
-            src={logoAsset.url}
-            alt="English Core AI Lab emblem"
-            width={512}
-            height={512}
-            className="h-10 w-10 shrink-0"
-          />
-          <span className="min-w-0 truncate font-display text-lg leading-tight font-semibold text-primary sm:text-xl">
-            English Core <span className="text-foreground">AI Lab</span>
+        <a href="#home" className="group flex min-w-0 items-center gap-2.5">
+          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-primary/30 bg-secondary/40 transition-colors group-hover:border-primary/70">
+            <img
+              src={logoAsset.url}
+              alt="English Core AI Lab emblem"
+              width={512}
+              height={512}
+              className="h-full w-full object-contain p-0.5"
+            />
+          </span>
+          <span className="flex min-w-0 flex-col leading-none">
+            <span className="truncate font-display text-lg font-semibold tracking-tight text-primary sm:text-xl">
+              English Core <span className="text-foreground">AI Lab</span>
+            </span>
+            <span className="mt-1 truncate text-[10px] tracking-[0.22em] text-foreground/50 uppercase">
+              Learn · Practise · Excel
+            </span>
           </span>
         </a>
 
