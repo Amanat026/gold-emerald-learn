@@ -12,7 +12,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/logo.png.asset.json";
 import founderAsset from "@/assets/founder.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -87,7 +87,7 @@ function Index() {
         <section id="home" className="veil relative overflow-hidden">
           <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:py-28">
             <img
-              src={logo}
+              src={logoAsset.url}
               alt="English Core AI Lab logo"
               width={512}
               height={512}
@@ -243,7 +243,7 @@ function Index() {
           <div>
             <div className="flex items-center gap-3">
               <img
-                src={logo}
+                src={logoAsset.url}
                 alt="English Core AI Lab emblem"
                 loading="lazy"
                 width={512}

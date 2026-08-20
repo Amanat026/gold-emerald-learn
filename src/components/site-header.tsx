@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -18,7 +18,7 @@ export function SiteHeader() {
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3 lg:flex lg:justify-between">
         <a href="#home" className="flex min-w-0 items-center gap-3">
           <img
-            src={logo}
+            src={logoAsset.url}
             alt="English Core AI Lab emblem"
             width={512}
             height={512}
