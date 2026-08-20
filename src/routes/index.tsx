@@ -12,7 +12,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/logo.png.asset.json";
 import founderAsset from "@/assets/founder.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
