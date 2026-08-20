@@ -6,6 +6,7 @@ import {
   Mail,
   MapPin,
   Phone,
+  MessageCircle,
   Quote,
   Facebook,
   Youtube,
@@ -19,17 +20,17 @@ import founderAsset from "@/assets/founder.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "English Core AI Lab — Learn English with AI Precision" },
+      { title: "English Core & English Core AI Lab — AI-Powered English Mastery" },
       {
         name: "description",
         content:
-          "English Core AI Lab offers Kids English, Academic Grammar (Class 6-10) and Professional English, founded and led by Amanat Ullah.",
+          "English Core & English Core AI Lab offers Kids English, Academic Grammar (Class 6-10) and Professional English, led by Amanat Ullah, Principal of Ummah Academy.",
       },
-      { property: "og:title", content: "English Core AI Lab — Learn English with AI Precision" },
+      { property: "og:title", content: "English Core & English Core AI Lab — AI-Powered English Mastery" },
       {
         property: "og:description",
         content:
-          "Kids English, Academic Grammar for Class 6-10, and Professional English — guided by founder Amanat Ullah.",
+          "Kids English, Academic Grammar for Class 6-10, and Professional English — where traditional teaching expertise meets Agentic AI.",
       },
     ],
   }),
@@ -40,39 +41,39 @@ const programs = [
   {
     icon: Baby,
     title: "Kids English",
-    desc: "Fun, interactive and story-driven modules that build vocabulary, phonics and confidence in young learners.",
-    points: ["Playful phonics & vocabulary", "Interactive speaking games", "Parent progress reports"],
+    desc: "AI-assisted, play-based modules that spark curiosity, build vocabulary, and develop natural speaking confidence in young learners.",
+    points: ["Playful phonics & vocabulary", "AI-powered speaking games", "Parent progress reports"],
   },
   {
     icon: BookOpen,
     title: "Academic English Grammar",
-    desc: "Class Six to Ten structural grammar with full textbook support and focused board exam preparation.",
-    points: ["NCTB textbook aligned", "Structural grammar mastery", "Model tests & exam drills"],
+    desc: "Class 6–10 structural grammar aligned with textbooks and board patterns, boosted by AI drills, instant correction, and exam-focused mentoring.",
+    points: ["Textbook & board aligned", "AI grammar drills & instant feedback", "Model tests & exam strategies"],
   },
   {
     icon: Briefcase,
     title: "Professional English",
-    desc: "Business communication, spoken fluency and workplace language skills for every career stage.",
-    points: ["Emails, reports & meetings", "Spoken fluency coaching", "Interview & presentation skills"],
+    desc: "Workplace communication, spoken fluency, and career-ready English sharpened through AI role-play and expert-led coaching.",
+    points: ["Emails, reports & meetings", "AI interview & presentation practice", "Spoken fluency coaching"],
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "My daughter went from shy to speaking full sentences in three months. The kids' modules are genuinely joyful.",
+      "My daughter went from shy to speaking full sentences in three months. The AI kids' modules are genuinely joyful and effective.",
     name: "Nusrat Jahan",
     role: "Parent, Dhaka",
   },
   {
     quote:
-      "The grammar classes matched my textbook exactly. I scored the highest English marks of my life in Class Nine.",
+      "The Academic Grammar course matched my Class 9 textbook exactly. With AI practice, I scored the highest English marks of my life.",
     name: "Rifat Hossain",
-    role: "Student, Class Nine",
+    role: "Student, Class 9",
   },
   {
     quote:
-      "The professional track fixed my email tone and meeting confidence. It changed how my team sees me.",
+      "The Professional English track fixed my email tone and meeting confidence. The AI role-plays made real workplace conversations easy.",
     name: "Tanvir Ahmed",
     role: "Operations Lead",
   },
@@ -88,22 +89,23 @@ function Index() {
         <section id="home" className="veil relative overflow-hidden">
           <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:py-28">
             <p className="text-xs tracking-[0.35em] text-primary uppercase">
-              English Core AI Lab
+              English Core & English Core AI Lab
             </p>
             <h1 className="mx-auto mt-4 max-w-3xl text-4xl leading-tight font-semibold sm:text-6xl">
-              Master English with AI precision and human warmth
+              Smart English Mastery for Every Stage — Kids, Academic Grammar & Professionals
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base text-foreground/80 sm:text-lg">
-              Founded and led by{" "}
-              <span className="font-semibold text-primary">Amanat Ullah, CEO &amp; Founder</span> —
-              guiding children, students and professionals to fluent, confident English.
+              Led by{" "}
+              <span className="font-semibold text-primary">Amanat Ullah, Principal of Ummah Academy</span>{" "}
+              — we fuse decades of classroom expertise with Agentic AI to deliver precision practice,
+              real-time feedback, and human mentorship.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
               <a href="#programs" className="btn-cta">
                 Get Started
               </a>
               <a href="#about" className="btn-ghost-gold">
-                Meet the Founder
+                Meet the Principal
               </a>
             </div>
             <p className="mt-10 text-sm text-foreground/60 italic">
@@ -119,10 +121,10 @@ function Index() {
         {/* Programs */}
         <section id="programs" className="mx-auto max-w-6xl px-5 py-20 sm:py-24">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-semibold sm:text-4xl">Three core pillars</h2>
+            <h2 className="text-3xl font-semibold sm:text-4xl">Three AI-powered learning paths</h2>
             <p className="mt-3 text-foreground/75">
-              Every learner meets English at a different stage. Our curriculum is built around three
-              focused paths.
+              From playful phonics to board-exam grammar and workplace fluency — each program is
+              shaped by expert curriculum design and intelligent AI practice.
             </p>
           </div>
 
@@ -150,13 +152,13 @@ function Index() {
           </div>
         </section>
 
-        {/* About founder */}
+        {/* About the Author */}
         <section id="about" className="border-y border-border/60 bg-card/40">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-2 sm:py-24">
             <div className="relative">
               <img
                 src={founderAsset.url}
-                alt="Amanat Ullah, Founder and CEO of English Core AI Lab"
+                alt="Amanat Ullah, Principal of Ummah Academy and founder of English Core AI Lab"
                 loading="lazy"
                 width={900}
                 height={1100}
@@ -164,27 +166,35 @@ function Index() {
               />
             </div>
             <div className="min-w-0">
-              <p className="text-xs tracking-[0.3em] text-primary uppercase">About the Founder</p>
+              <p className="text-xs tracking-[0.3em] text-primary uppercase">About the Author</p>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Amanat Ullah</h2>
-              <p className="mt-1 text-sm text-foreground/70">CEO &amp; Founder</p>
+              <p className="mt-1 text-sm text-foreground/70">Principal, Ummah Academy</p>
               <p className="mt-6 leading-relaxed text-foreground/80">
-                Amanat Ullah founded English Core AI Lab with a single conviction: language learning
-                should be as precise as technology and as patient as a good teacher. After years in
-                classrooms watching learners memorise rules they never used, he built a lab where AI
-                handles practice and feedback, while mentors handle meaning and motivation.
+                Amanat Ullah is an English language educator, AI integration specialist, and the
+                Principal of Ummah Academy. With an MA in E.L.T, BA (Hons) in English, B.Ed, NTRCA
+                qualification, a Diploma in Computer, and deep expertise in Agentic AI, he bridges
+                the depth of traditional teaching with the speed of intelligent technology.
               </p>
               <p className="mt-4 leading-relaxed text-foreground/80">
-                His vision is a platform where a six-year-old, a Class Ten examinee and a working
-                professional each find a path that fits — grounded in values, driven by intelligence.
+                His experience spans four years of teaching in Dubai, UAE, and senior teaching and
+                lecturer roles at Ramu Cantonment English School & College, Ukhia Degree College, and
+                Bangamatha Mohila College. Through English Core & English Core AI Lab, he designs
+                learning experiences where expert curriculum meets adaptive AI practice — so every
+                learner, from a young child to a working professional, builds real fluency and
+                confidence.
               </p>
               <ul className="mt-6 space-y-2 text-sm text-foreground/75">
                 <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 shrink-0 text-primary" />
-                  <a href="tel:+8801608010181" className="hover:text-primary transition-colors">01608-010181</a>
+                  <MessageCircle className="h-4 w-4 shrink-0 text-primary" />
+                  <a href="https://wa.me/8801608010181" className="hover:text-primary transition-colors">
+                    WhatsApp: 01608010181
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4 shrink-0 text-primary" />
-                  <a href="mailto:amanatullah263@gmail.com" className="hover:text-primary transition-colors">amanatullah263@gmail.com</a>
+                  <a href="mailto:englishcore26@gmail.com" className="hover:text-primary transition-colors">
+                    englishcore26@gmail.com
+                  </a>
                 </li>
               </ul>
               <a href="#contact" className="btn-cta mt-8">
@@ -221,14 +231,15 @@ function Index() {
                 Start your English journey today
               </h2>
               <p className="mt-4 text-foreground/80">
-                Tell us your goal and we will place you in the right program within 24 hours.
+                Send a message on WhatsApp or email us — we will place you in the right program
+                within 24 hours.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <a href="mailto:englishcore26@gmail.com" className="btn-ghost-gold">
                   englishcore26@gmail.com
                 </a>
-                <a href="tel:+8801608010181" className="btn-ghost-gold">
-                  +880 1608-010181
+                <a href="https://wa.me/8801608010181" className="btn-ghost-gold">
+                  WhatsApp: 01608010181
                 </a>
               </div>
             </div>
@@ -252,7 +263,7 @@ function Index() {
                 className="h-9 w-9"
               />
               <span className="font-display text-lg font-semibold text-primary">
-                English Core AI Lab
+                English Core & English Core AI Lab
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-foreground/70">
@@ -281,8 +292,8 @@ function Index() {
                 <a href="mailto:englishcore26@gmail.com" className="hover:text-primary transition-colors">englishcore26@gmail.com</a>
               </li>
               <li className="flex gap-2">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href="tel:+8801608010181" className="hover:text-primary transition-colors">+880 1608-010181</a>
+                <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <a href="https://wa.me/8801608010181" className="hover:text-primary transition-colors">WhatsApp: 01608010181</a>
               </li>
               <li className="flex gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -310,7 +321,7 @@ function Index() {
 
         <div className="border-t border-border/60">
           <p className="mx-auto max-w-6xl px-5 py-6 text-center text-xs text-foreground/55">
-            © {new Date().getFullYear()} English Core AI Lab. Founded by Amanat Ullah.
+            © {new Date().getFullYear()} English Core & English Core AI Lab. Founded by Amanat Ullah.
           </p>
         </div>
       </footer>
