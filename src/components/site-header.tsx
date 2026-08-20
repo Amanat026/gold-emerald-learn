@@ -28,10 +28,10 @@ export function SiteHeader() {
           </span>
           <span className="flex min-w-0 flex-col leading-none">
             <span className="truncate font-display text-lg font-semibold tracking-tight text-primary sm:text-xl">
-              English Core <span className="text-foreground">AI Lab</span>
+              English Core <span className="text-foreground">& English Core AI Lab</span>
             </span>
             <span className="mt-1 truncate text-[10px] tracking-[0.22em] text-foreground/50 uppercase">
-              Learn · Practise · Excel
+              Powered by Ummah Academy
             </span>
           </span>
         </a>
