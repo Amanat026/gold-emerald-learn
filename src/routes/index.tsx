@@ -4,8 +4,7 @@ import {
   BookOpen,
   Briefcase,
   Mail,
-  MapPin,
-  Phone,
+  
   MessageCircle,
   Quote,
   Facebook,
@@ -16,21 +15,22 @@ import { SiteHeader } from "@/components/site-header";
 import { ContactForm } from "@/components/contact-form";
 import logoAsset from "@/assets/logo.png.asset.json";
 import founderAsset from "@/assets/founder.jpg.asset.json";
+import heroCoverAsset from "@/assets/hero-cover.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "English Core & English Core AI Lab — AI-Powered English Mastery" },
+      { title: "English Core AI Lab — AI-Powered English Mastery" },
       {
         name: "description",
         content:
-          "English Core & English Core AI Lab offers Kids English, Academic Grammar (Class 6-10) and Professional English, led by Amanat Ullah, Principal of Ummah Academy.",
+          "English Core AI Lab offers Kids English, Academic Grammar (Class 6-10) and Professional English, led by Amanat Ullah.",
       },
-      { property: "og:title", content: "English Core & English Core AI Lab — AI-Powered English Mastery" },
+      { property: "og:title", content: "English Core AI Lab — AI-Powered English Mastery" },
       {
         property: "og:description",
         content:
-          "Kids English, Academic Grammar for Class 6-10, and Professional English — where traditional teaching expertise meets Agentic AI.",
+          "Kids English, Academic Grammar for Class 6-10, and Professional English — where teaching expertise meets Agentic AI.",
       },
     ],
   }),
@@ -86,33 +86,48 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section id="home" className="veil relative overflow-hidden">
-          <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:py-28">
-            <p className="text-xs tracking-[0.35em] text-primary uppercase">
-              English Core & English Core AI Lab
+        <section id="home" className="relative isolate overflow-hidden">
+          <img
+            src={heroCoverAsset.url}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+          />
+          {/* Watermark veil keeps the headline legible over any cover image */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-background/85 backdrop-blur-[2px] sm:bg-background/80"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/60 to-background"
+          />
+          <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-5 sm:py-28">
+            <p className="text-[10px] tracking-[0.3em] text-primary uppercase sm:text-xs sm:tracking-[0.35em]">
+              English Core AI Lab
             </p>
-            <h1 className="mx-auto mt-4 max-w-3xl text-4xl leading-tight font-semibold sm:text-6xl">
-              Smart English Mastery for Every Stage — Kids, Academic Grammar & Professionals
+            <h1 className="mx-auto mt-4 max-w-3xl text-3xl leading-tight font-semibold [text-shadow:0_2px_18px_var(--background)] sm:text-5xl lg:text-6xl">
+              Smart English Mastery for Every Stage — Kids, Academic Grammar &amp; Professionals
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base text-foreground/80 sm:text-lg">
-              Led by{" "}
-              <span className="font-semibold text-primary">Amanat Ullah, Principal of Ummah Academy</span>{" "}
-              — we fuse decades of classroom expertise with Agentic AI to deliver precision practice,
-              real-time feedback, and human mentorship.
+            <p className="mx-auto mt-5 max-w-2xl text-sm text-foreground/85 sm:text-lg">
+              Led by <span className="font-semibold text-primary">Amanat Ullah</span> — we fuse
+              classroom expertise with Agentic AI to deliver precision practice, real-time feedback,
+              and human mentorship.
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <a href="#programs" className="btn-cta">
                 Get Started
               </a>
               <a href="#about" className="btn-ghost-gold">
-                Meet the Principal
+                Meet the Founder
               </a>
             </div>
-            <p className="mt-10 text-sm text-foreground/60 italic">
+            <p className="mt-10 text-xs text-foreground/65 italic sm:text-sm">
               “Technological intelligence drives the world; religious values hold our spine.”
             </p>
           </div>
         </section>
+
 
         <div className="mx-auto max-w-6xl px-5">
           <div className="gold-rule" />
@@ -158,7 +173,7 @@ function Index() {
             <div className="relative">
               <img
                 src={founderAsset.url}
-                alt="Amanat Ullah, Principal of Ummah Academy and founder of English Core AI Lab"
+                alt="Amanat Ullah, founder of English Core AI Lab"
                 loading="lazy"
                 width={900}
                 height={1100}
@@ -168,21 +183,21 @@ function Index() {
             <div className="min-w-0">
               <p className="text-xs tracking-[0.3em] text-primary uppercase">About the Author</p>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Amanat Ullah</h2>
-              <p className="mt-1 text-sm text-foreground/70">Principal, Ummah Academy</p>
+              <p className="mt-1 text-sm text-foreground/70">Founder, English Core AI Lab</p>
               <p className="mt-6 leading-relaxed text-foreground/80">
-                Amanat Ullah is an English language educator, AI integration specialist, and the
-                Principal of Ummah Academy. With an MA in E.L.T, BA (Hons) in English, B.Ed, NTRCA
-                qualification, a Diploma in Computer, and deep expertise in Agentic AI, he bridges
-                the depth of traditional teaching with the speed of intelligent technology.
+                Amanat Ullah is an English language educator and AI integration specialist. With an
+                MA in E.L.T, BA (Hons) in English, B.Ed, NTRCA qualification, a Diploma in Computer,
+                and deep expertise in Agentic AI, he bridges the depth of traditional teaching with
+                the speed of intelligent technology.
               </p>
               <p className="mt-4 leading-relaxed text-foreground/80">
                 His experience spans four years of teaching in Dubai, UAE, and senior teaching and
-                lecturer roles at Ramu Cantonment English School & College, Ukhia Degree College, and
-                Bangamatha Mohila College. Through English Core & English Core AI Lab, he designs
-                learning experiences where expert curriculum meets adaptive AI practice — so every
-                learner, from a young child to a working professional, builds real fluency and
-                confidence.
+                lecturer roles at Ramu Cantonment English School &amp; College, Ukhia Degree College,
+                and Bangamatha Mohila College. Through English Core AI Lab, he designs learning
+                experiences where expert curriculum meets adaptive AI practice — so every learner,
+                from a young child to a working professional, builds real fluency and confidence.
               </p>
+
               <ul className="mt-6 space-y-2 text-sm text-foreground/75">
                 <li className="flex items-center gap-2">
                   <MessageCircle className="h-4 w-4 shrink-0 text-primary" />
@@ -251,80 +266,38 @@ function Index() {
       </main>
 
       <footer className="border-t border-border/60 bg-background">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <img
-                src={logoAsset.url}
-                alt="English Core AI Lab emblem"
-                loading="lazy"
-                width={512}
-                height={512}
-                className="h-9 w-9"
-              />
-              <span className="font-display text-lg font-semibold text-primary">
-                English Core & English Core AI Lab
-              </span>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/70">
-              Technological intelligence drives the world; religious values hold our spine.
-            </p>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center sm:px-5">
+          <div className="flex items-center gap-3">
+            <img
+              src={logoAsset.url}
+              alt="English Core AI Lab emblem"
+              loading="lazy"
+              width={512}
+              height={512}
+              className="h-8 w-8"
+            />
+            <span className="font-display text-base font-semibold text-primary sm:text-lg">
+              English Core AI Lab
+            </span>
           </div>
-
-          <div>
-            <h3 className="text-sm font-semibold tracking-wider uppercase">Quick Links</h3>
-            <ul className="mt-4 space-y-2 text-sm text-foreground/70">
-              {["Home", "About", "Programs", "Testimonials", "Contact"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="transition-colors hover:text-primary">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="flex gap-3">
+            {[Facebook, Youtube, Linkedin].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                aria-label="Social profile"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-primary transition-colors hover:bg-primary hover:text-background"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
-
-          <div>
-            <h3 className="text-sm font-semibold tracking-wider uppercase">Contact</h3>
-            <ul className="mt-4 space-y-3 text-sm text-foreground/70">
-              <li className="flex gap-2">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href="mailto:englishcore26@gmail.com" className="hover:text-primary transition-colors">englishcore26@gmail.com</a>
-              </li>
-              <li className="flex gap-2">
-                <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href="https://wa.me/8801608010181" className="hover:text-primary transition-colors">WhatsApp: 01608010181</a>
-              </li>
-              <li className="flex gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                Dhaka, Bangladesh
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold tracking-wider uppercase">Follow</h3>
-            <div className="mt-4 flex gap-3">
-              {[Facebook, Youtube, Linkedin].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Social profile"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-primary transition-colors hover:bg-primary hover:text-background"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-border/60">
-          <p className="mx-auto max-w-6xl px-5 py-6 text-center text-xs text-foreground/55">
-            © {new Date().getFullYear()} English Core & English Core AI Lab. Founded by Amanat Ullah.
+          <p className="text-xs text-foreground/55">
+            © {new Date().getFullYear()} English Core AI Lab. All rights reserved.
           </p>
         </div>
       </footer>
+
     </div>
   );
 }
