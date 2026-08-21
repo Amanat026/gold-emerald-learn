@@ -173,7 +173,7 @@ function Index() {
             <div className="relative">
               <img
                 src={founderAsset.url}
-                alt="Amanat Ullah, Principal of Ummah Academy and founder of English Core AI Lab"
+                alt="Amanat Ullah, founder of English Core AI Lab"
                 loading="lazy"
                 width={900}
                 height={1100}
@@ -183,21 +183,21 @@ function Index() {
             <div className="min-w-0">
               <p className="text-xs tracking-[0.3em] text-primary uppercase">About the Author</p>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">Amanat Ullah</h2>
-              <p className="mt-1 text-sm text-foreground/70">Principal, Ummah Academy</p>
+              <p className="mt-1 text-sm text-foreground/70">Founder, English Core AI Lab</p>
               <p className="mt-6 leading-relaxed text-foreground/80">
-                Amanat Ullah is an English language educator, AI integration specialist, and the
-                Principal of Ummah Academy. With an MA in E.L.T, BA (Hons) in English, B.Ed, NTRCA
-                qualification, a Diploma in Computer, and deep expertise in Agentic AI, he bridges
-                the depth of traditional teaching with the speed of intelligent technology.
+                Amanat Ullah is an English language educator and AI integration specialist. With an
+                MA in E.L.T, BA (Hons) in English, B.Ed, NTRCA qualification, a Diploma in Computer,
+                and deep expertise in Agentic AI, he bridges the depth of traditional teaching with
+                the speed of intelligent technology.
               </p>
               <p className="mt-4 leading-relaxed text-foreground/80">
                 His experience spans four years of teaching in Dubai, UAE, and senior teaching and
-                lecturer roles at Ramu Cantonment English School & College, Ukhia Degree College, and
-                Bangamatha Mohila College. Through English Core & English Core AI Lab, he designs
-                learning experiences where expert curriculum meets adaptive AI practice — so every
-                learner, from a young child to a working professional, builds real fluency and
-                confidence.
+                lecturer roles at Ramu Cantonment English School &amp; College, Ukhia Degree College,
+                and Bangamatha Mohila College. Through English Core AI Lab, he designs learning
+                experiences where expert curriculum meets adaptive AI practice — so every learner,
+                from a young child to a working professional, builds real fluency and confidence.
               </p>
+
               <ul className="mt-6 space-y-2 text-sm text-foreground/75">
                 <li className="flex items-center gap-2">
                   <MessageCircle className="h-4 w-4 shrink-0 text-primary" />
