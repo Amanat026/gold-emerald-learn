@@ -5,7 +5,6 @@ import {
   Briefcase,
   Mail,
   MapPin,
-  Phone,
   MessageCircle,
   Quote,
   Facebook,
@@ -16,21 +15,22 @@ import { SiteHeader } from "@/components/site-header";
 import { ContactForm } from "@/components/contact-form";
 import logoAsset from "@/assets/logo.png.asset.json";
 import founderAsset from "@/assets/founder.jpg.asset.json";
+import heroCoverAsset from "@/assets/hero-cover.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "English Core & English Core AI Lab — AI-Powered English Mastery" },
+      { title: "English Core AI Lab — AI-Powered English Mastery" },
       {
         name: "description",
         content:
-          "English Core & English Core AI Lab offers Kids English, Academic Grammar (Class 6-10) and Professional English, led by Amanat Ullah, Principal of Ummah Academy.",
+          "English Core AI Lab offers Kids English, Academic Grammar (Class 6-10) and Professional English, led by Amanat Ullah.",
       },
-      { property: "og:title", content: "English Core & English Core AI Lab — AI-Powered English Mastery" },
+      { property: "og:title", content: "English Core AI Lab — AI-Powered English Mastery" },
       {
         property: "og:description",
         content:
-          "Kids English, Academic Grammar for Class 6-10, and Professional English — where traditional teaching expertise meets Agentic AI.",
+          "Kids English, Academic Grammar for Class 6-10, and Professional English — where teaching expertise meets Agentic AI.",
       },
     ],
   }),
