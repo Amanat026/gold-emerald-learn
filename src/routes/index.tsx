@@ -86,33 +86,48 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section id="home" className="veil relative overflow-hidden">
-          <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:py-28">
-            <p className="text-xs tracking-[0.35em] text-primary uppercase">
-              English Core & English Core AI Lab
+        <section id="home" className="relative isolate overflow-hidden">
+          <img
+            src={heroCoverAsset.url}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+          />
+          {/* Watermark veil keeps the headline legible over any cover image */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-background/85 backdrop-blur-[2px] sm:bg-background/80"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/60 to-background"
+          />
+          <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-5 sm:py-28">
+            <p className="text-[10px] tracking-[0.3em] text-primary uppercase sm:text-xs sm:tracking-[0.35em]">
+              English Core AI Lab
             </p>
-            <h1 className="mx-auto mt-4 max-w-3xl text-4xl leading-tight font-semibold sm:text-6xl">
-              Smart English Mastery for Every Stage — Kids, Academic Grammar & Professionals
+            <h1 className="mx-auto mt-4 max-w-3xl text-3xl leading-tight font-semibold [text-shadow:0_2px_18px_var(--background)] sm:text-5xl lg:text-6xl">
+              Smart English Mastery for Every Stage — Kids, Academic Grammar &amp; Professionals
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base text-foreground/80 sm:text-lg">
-              Led by{" "}
-              <span className="font-semibold text-primary">Amanat Ullah, Principal of Ummah Academy</span>{" "}
-              — we fuse decades of classroom expertise with Agentic AI to deliver precision practice,
-              real-time feedback, and human mentorship.
+            <p className="mx-auto mt-5 max-w-2xl text-sm text-foreground/85 sm:text-lg">
+              Led by <span className="font-semibold text-primary">Amanat Ullah</span> — we fuse
+              classroom expertise with Agentic AI to deliver precision practice, real-time feedback,
+              and human mentorship.
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <a href="#programs" className="btn-cta">
                 Get Started
               </a>
               <a href="#about" className="btn-ghost-gold">
-                Meet the Principal
+                Meet the Founder
               </a>
             </div>
-            <p className="mt-10 text-sm text-foreground/60 italic">
+            <p className="mt-10 text-xs text-foreground/65 italic sm:text-sm">
               “Technological intelligence drives the world; religious values hold our spine.”
             </p>
           </div>
         </section>
+
 
         <div className="mx-auto max-w-6xl px-5">
           <div className="gold-rule" />
