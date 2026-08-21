@@ -266,80 +266,38 @@ function Index() {
       </main>
 
       <footer className="border-t border-border/60 bg-background">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <img
-                src={logoAsset.url}
-                alt="English Core AI Lab emblem"
-                loading="lazy"
-                width={512}
-                height={512}
-                className="h-9 w-9"
-              />
-              <span className="font-display text-lg font-semibold text-primary">
-                English Core & English Core AI Lab
-              </span>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/70">
-              Technological intelligence drives the world; religious values hold our spine.
-            </p>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center sm:px-5">
+          <div className="flex items-center gap-3">
+            <img
+              src={logoAsset.url}
+              alt="English Core AI Lab emblem"
+              loading="lazy"
+              width={512}
+              height={512}
+              className="h-8 w-8"
+            />
+            <span className="font-display text-base font-semibold text-primary sm:text-lg">
+              English Core AI Lab
+            </span>
           </div>
-
-          <div>
-            <h3 className="text-sm font-semibold tracking-wider uppercase">Quick Links</h3>
-            <ul className="mt-4 space-y-2 text-sm text-foreground/70">
-              {["Home", "About", "Programs", "Testimonials", "Contact"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="transition-colors hover:text-primary">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="flex gap-3">
+            {[Facebook, Youtube, Linkedin].map((Icon, i) => (
+              <a
+                key={i}
+                href="#"
+                aria-label="Social profile"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-primary transition-colors hover:bg-primary hover:text-background"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
-
-          <div>
-            <h3 className="text-sm font-semibold tracking-wider uppercase">Contact</h3>
-            <ul className="mt-4 space-y-3 text-sm text-foreground/70">
-              <li className="flex gap-2">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href="mailto:englishcore26@gmail.com" className="hover:text-primary transition-colors">englishcore26@gmail.com</a>
-              </li>
-              <li className="flex gap-2">
-                <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href="https://wa.me/8801608010181" className="hover:text-primary transition-colors">WhatsApp: 01608010181</a>
-              </li>
-              <li className="flex gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                Dhaka, Bangladesh
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold tracking-wider uppercase">Follow</h3>
-            <div className="mt-4 flex gap-3">
-              {[Facebook, Youtube, Linkedin].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Social profile"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-primary transition-colors hover:bg-primary hover:text-background"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-border/60">
-          <p className="mx-auto max-w-6xl px-5 py-6 text-center text-xs text-foreground/55">
-            © {new Date().getFullYear()} English Core & English Core AI Lab. Founded by Amanat Ullah.
+          <p className="text-xs text-foreground/55">
+            © {new Date().getFullYear()} English Core AI Lab. All rights reserved.
           </p>
         </div>
       </footer>
+
     </div>
   );
 }
