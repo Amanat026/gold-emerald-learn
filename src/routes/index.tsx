@@ -4,7 +4,7 @@ import {
   BookOpen,
   Briefcase,
   Mail,
-  MapPin,
+  
   MessageCircle,
   Quote,
   Facebook,
