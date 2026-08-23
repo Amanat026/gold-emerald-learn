@@ -1,44 +1,48 @@
 import { useState } from "react";
 import { Menu, X, Languages } from "lucide-react";
 import logoAsset from "@/assets/logo.png.asset.json";
-
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Programs", href: "#programs" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
-];
-
-const languageModes = [
-  { value: "en-bn", label: "English → Bengali" },
-  { value: "bn-en", label: "Bengali → English" },
-];
+import { useLanguage, type Lang } from "@/lib/i18n";
 
 function LanguageSwitcher({ className = "" }: { className?: string }) {
-  const [mode, setMode] = useState("en-bn");
+  const { lang, setLang, t } = useLanguage();
 
   return (
-    <label className={`flex items-center gap-2 ${className}`}>
-      <Languages className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-      <span className="sr-only">Language mode</span>
-      <select
-        value={mode}
-        onChange={(e) => setMode(e.target.value)}
-        className="min-w-0 rounded-md border border-border bg-background px-2.5 py-1.5 text-xs text-foreground outline-none transition-colors focus:border-primary"
-      >
-        {languageModes.map((m) => (
-          <option key={m.value} value={m.value}>
-            {m.label}
-          </option>
-        ))}
-      </select>
-    </label>
+    <div
+      role="group"
+      aria-label={t.lang.label}
+      className={`flex items-center gap-1 rounded-full border border-border bg-background p-1 ${className}`}
+    >
+      <Languages className="ml-1.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+      {(["en", "bn"] as Lang[]).map((l) => (
+        <button
+          key={l}
+          type="button"
+          onClick={() => setLang(l)}
+          aria-pressed={lang === l}
+          className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
+            lang === l
+              ? "bg-secondary text-primary"
+              : "text-foreground/60 hover:text-foreground"
+          }`}
+        >
+          {l === "en" ? t.lang.en : t.lang.bn}
+        </button>
+      ))}
+    </div>
   );
 }
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const links = [
+    { label: t.nav.home, href: "#home" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.programs, href: "#programs" },
+    { label: t.nav.testimonials, href: "#testimonials" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -61,7 +65,7 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <a
-              key={l.label}
+              key={l.href}
               href={l.href}
               className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
             >
@@ -73,7 +77,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-3 lg:flex">
           <LanguageSwitcher />
           <a href="#contact" className="btn-cta text-sm">
-            Join Now
+            {t.nav.join}
           </a>
         </div>
 
@@ -93,7 +97,7 @@ export function SiteHeader() {
           <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4 sm:px-5">
             {links.map((l) => (
               <a
-                key={l.label}
+                key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
                 className="rounded-md px-2 py-2 text-sm text-foreground/85 transition-colors hover:text-primary"
@@ -101,9 +105,11 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
-            <LanguageSwitcher className="mt-3 px-2" />
+            <div className="mt-3 px-2">
+              <LanguageSwitcher />
+            </div>
             <a href="#contact" onClick={() => setOpen(false)} className="btn-cta mt-3 text-sm">
-              Join Now
+              {t.nav.join}
             </a>
           </nav>
         </div>

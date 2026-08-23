@@ -1,46 +1,57 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { z } from "zod";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
+import { useLanguage } from "@/lib/i18n";
 
 const PAGE_EMAIL = "englishcore26@gmail.com";
 const FOUNDER_EMAIL = "amanatullah263@gmail.com";
 
-const contactSchema = z.object({
-  name: z.string().trim().nonempty({ message: "Please enter your name" }).max(100, {
-    message: "Name must be less than 100 characters",
-  }),
-  email: z
-    .string()
-    .trim()
-    .nonempty({ message: "Please enter your email" })
-    .email({ message: "Enter a valid email address" })
-    .max(255, { message: "Email must be less than 255 characters" }),
-  phone: z
-    .string()
-    .trim()
-    .max(20, { message: "Phone must be less than 20 characters" })
-    .regex(/^[0-9+\-\s()]*$/, { message: "Phone can only contain digits and + - ( )" })
-    .optional()
-    .or(z.literal("")),
-  program: z.enum(["Kids English", "Academic English Grammar", "Professional English"], {
-    errorMap: () => ({ message: "Please choose a program" }),
-  }),
-  message: z
-    .string()
-    .trim()
-    .nonempty({ message: "Please write a short message" })
-    .max(1000, { message: "Message must be less than 1000 characters" }),
-});
+const PROGRAM_KEYS = ["kids", "academic", "professional"] as const;
+type ProgramKey = (typeof PROGRAM_KEYS)[number];
 
-type FieldErrors = Partial<Record<keyof z.infer<typeof contactSchema>, string>>;
+type FieldErrors = Partial<Record<"name" | "email" | "phone" | "program" | "message", string>>;
 
 const fieldClass =
   "mt-2 w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors focus:border-primary";
 
 export function ContactForm() {
+  const { t } = useLanguage();
   const [errors, setErrors] = useState<FieldErrors>({});
   const [sending, setSending] = useState(false);
+
+  const contactSchema = useMemo(
+    () =>
+      z.object({
+        name: z
+          .string()
+          .trim()
+          .nonempty({ message: t.form.errors.nameRequired })
+          .max(100, { message: t.form.errors.nameMax }),
+        email: z
+          .string()
+          .trim()
+          .nonempty({ message: t.form.errors.emailRequired })
+          .email({ message: t.form.errors.emailInvalid })
+          .max(255, { message: t.form.errors.emailMax }),
+        phone: z
+          .string()
+          .trim()
+          .max(20, { message: t.form.errors.phoneMax })
+          .regex(/^[0-9+\-\s()]*$/, { message: t.form.errors.phoneInvalid })
+          .optional()
+          .or(z.literal("")),
+        program: z.enum(PROGRAM_KEYS, {
+          errorMap: () => ({ message: t.form.errors.programRequired }),
+        }),
+        message: z
+          .string()
+          .trim()
+          .nonempty({ message: t.form.errors.messageRequired })
+          .max(1000, { message: t.form.errors.messageMax }),
+      }),
+    [t],
+  );
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -55,7 +66,7 @@ export function ContactForm() {
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
-      toast.error("Please fix the highlighted fields");
+      toast.error(t.form.toastError);
       return;
     }
 
@@ -63,12 +74,14 @@ export function ContactForm() {
     setSending(true);
 
     const v = parsed.data;
-    const subject = `New enquiry — ${v.program} — ${v.name}`;
+    const programLabel =
+      t.form.programOptions[PROGRAM_KEYS.indexOf(v.program as ProgramKey)] ?? v.program;
+    const subject = `New enquiry — ${programLabel} — ${v.name}`;
     const body = [
       `Name: ${v.name}`,
       `Email: ${v.email}`,
       `Phone: ${v.phone || "—"}`,
-      `Program: ${v.program}`,
+      `Program: ${programLabel}`,
       "",
       "Message:",
       v.message,
@@ -79,7 +92,7 @@ export function ContactForm() {
     )}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = href;
-    toast.success("Your email is ready — just press send in your mail app.");
+    toast.success(t.form.toastSuccess);
     form.reset();
     setSending(false);
   }
@@ -89,43 +102,57 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="text-sm font-medium text-foreground/85">
-            Full name
+            {t.form.name}
           </label>
-          <input id="name" name="name" maxLength={100} placeholder="Your name" className={fieldClass} />
+          <input
+            id="name"
+            name="name"
+            maxLength={100}
+            placeholder={t.form.namePh}
+            className={fieldClass}
+          />
           {errors.name && <p className="mt-1.5 text-xs text-destructive">{errors.name}</p>}
         </div>
         <div>
           <label htmlFor="email" className="text-sm font-medium text-foreground/85">
-            Email
+            {t.form.email}
           </label>
           <input
             id="email"
             name="email"
             type="email"
             maxLength={255}
-            placeholder="you@example.com"
+            placeholder={t.form.emailPh}
             className={fieldClass}
           />
           {errors.email && <p className="mt-1.5 text-xs text-destructive">{errors.email}</p>}
         </div>
         <div>
           <label htmlFor="phone" className="text-sm font-medium text-foreground/85">
-            Phone <span className="text-foreground/50">(optional)</span>
+            {t.form.phone} <span className="text-foreground/50">{t.form.optional}</span>
           </label>
-          <input id="phone" name="phone" maxLength={20} placeholder="01XXXXXXXXX" className={fieldClass} />
+          <input
+            id="phone"
+            name="phone"
+            maxLength={20}
+            placeholder={t.form.phonePh}
+            className={fieldClass}
+          />
           {errors.phone && <p className="mt-1.5 text-xs text-destructive">{errors.phone}</p>}
         </div>
         <div>
           <label htmlFor="program" className="text-sm font-medium text-foreground/85">
-            Program
+            {t.form.program}
           </label>
           <select id="program" name="program" defaultValue="" className={fieldClass}>
             <option value="" disabled>
-              Select a program
+              {t.form.programPh}
             </option>
-            <option>Kids English</option>
-            <option>Academic English Grammar</option>
-            <option>Professional English</option>
+            {PROGRAM_KEYS.map((key, i) => (
+              <option key={key} value={key}>
+                {t.form.programOptions[i]}
+              </option>
+            ))}
           </select>
           {errors.program && <p className="mt-1.5 text-xs text-destructive">{errors.program}</p>}
         </div>
@@ -133,14 +160,14 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className="text-sm font-medium text-foreground/85">
-          Message
+          {t.form.message}
         </label>
         <textarea
           id="message"
           name="message"
           rows={5}
           maxLength={1000}
-          placeholder="Tell us about your goal…"
+          placeholder={t.form.messagePh}
           className={fieldClass}
         />
         {errors.message && <p className="mt-1.5 text-xs text-destructive">{errors.message}</p>}
@@ -148,11 +175,9 @@ export function ContactForm() {
 
       <button type="submit" disabled={sending} className="btn-cta w-full sm:w-auto">
         <Send className="mr-2 inline h-4 w-4" />
-        Send message
+        {t.form.send}
       </button>
-      <p className="text-xs text-foreground/55">
-        Your message opens in your mail app addressed to {PAGE_EMAIL}.
-      </p>
+      <p className="text-xs text-foreground/55">{t.form.note}</p>
     </form>
   );
 }
