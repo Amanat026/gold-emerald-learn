@@ -60,9 +60,9 @@ export function ContactForm() {
     const parsed = contactSchema.safeParse(data);
 
     if (!parsed.success) {
-      const next: Record<string, string> = {};
+      const next: FieldErrors = {};
       for (const issue of parsed.error.issues) {
-        const key = String(issue.path[0]);
+        const key = issue.path[0] as keyof FieldErrors;
         if (!next[key]) next[key] = issue.message;
       }
       setErrors(next);
