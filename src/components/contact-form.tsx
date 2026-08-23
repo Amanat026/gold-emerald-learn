@@ -10,12 +10,14 @@ const FOUNDER_EMAIL = "amanatullah263@gmail.com";
 const PROGRAM_KEYS = ["kids", "academic", "professional"] as const;
 type ProgramKey = (typeof PROGRAM_KEYS)[number];
 
+type FieldErrors = Partial<Record<"name" | "email" | "phone" | "program" | "message", string>>;
+
 const fieldClass =
   "mt-2 w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-foreground/40 outline-none transition-colors focus:border-primary";
 
 export function ContactForm() {
   const { t } = useLanguage();
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [sending, setSending] = useState(false);
 
   const contactSchema = useMemo(
