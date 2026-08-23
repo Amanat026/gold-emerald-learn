@@ -100,7 +100,7 @@ function Index() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {t.programs.items.map((p, i) => {
-              const Icon = programIcons[i];
+              const Icon = programIcons[i] ?? Baby;
               return (
                 <article
                   key={p.title}
