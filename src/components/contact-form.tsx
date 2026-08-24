@@ -2,13 +2,11 @@ import { useMemo, useState } from "react";
 import { z } from "zod";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { useLanguage } from "@/lib/i18n";
-
-const PAGE_EMAIL = "englishcore26@gmail.com";
-const FOUNDER_EMAIL = "amanatullah263@gmail.com";
+import { submitContactForm } from "@/lib/contact.functions";
 
 const PROGRAM_KEYS = ["kids", "academic", "professional"] as const;
-type ProgramKey = (typeof PROGRAM_KEYS)[number];
 
 type FieldErrors = Partial<Record<"name" | "email" | "phone" | "program" | "message", string>>;
 
@@ -53,7 +51,9 @@ export function ContactForm() {
     [t],
   );
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const submitContact = useServerFn(submitContactForm);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
@@ -72,29 +72,16 @@ export function ContactForm() {
 
     setErrors({});
     setSending(true);
-
-    const v = parsed.data;
-    const programLabel =
-      t.form.programOptions[PROGRAM_KEYS.indexOf(v.program as ProgramKey)] ?? v.program;
-    const subject = `New enquiry — ${programLabel} — ${v.name}`;
-    const body = [
-      `Name: ${v.name}`,
-      `Email: ${v.email}`,
-      `Phone: ${v.phone || "—"}`,
-      `Program: ${programLabel}`,
-      "",
-      "Message:",
-      v.message,
-    ].join("\n");
-
-    const href = `mailto:${PAGE_EMAIL}?cc=${encodeURIComponent(
-      FOUNDER_EMAIL,
-    )}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = href;
-    toast.success(t.form.toastSuccess);
-    form.reset();
-    setSending(false);
+    try {
+      await submitContact({ data: parsed.data });
+      toast.success(t.form.toastSuccess);
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      toast.error(t.form.toastSendError);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -175,7 +162,7 @@ export function ContactForm() {
 
       <button type="submit" disabled={sending} className="btn-cta w-full sm:w-auto">
         <Send className="mr-2 inline h-4 w-4" />
-        {t.form.send}
+        {sending ? t.form.sending : t.form.send}
       </button>
       <p className="text-xs text-foreground/55">{t.form.note}</p>
     </form>
