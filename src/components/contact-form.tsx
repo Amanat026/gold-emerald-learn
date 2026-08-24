@@ -7,7 +7,6 @@ import { useLanguage } from "@/lib/i18n";
 import { submitContactForm } from "@/lib/contact.functions";
 
 const PROGRAM_KEYS = ["kids", "academic", "professional"] as const;
-type ProgramKey = (typeof PROGRAM_KEYS)[number];
 
 type FieldErrors = Partial<Record<"name" | "email" | "phone" | "program" | "message", string>>;
 
@@ -163,7 +162,7 @@ export function ContactForm() {
 
       <button type="submit" disabled={sending} className="btn-cta w-full sm:w-auto">
         <Send className="mr-2 inline h-4 w-4" />
-        {t.form.send}
+        {sending ? t.form.sending : t.form.send}
       </button>
       <p className="text-xs text-foreground/55">{t.form.note}</p>
     </form>
