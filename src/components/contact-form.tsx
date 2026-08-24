@@ -52,7 +52,9 @@ export function ContactForm() {
     [t],
   );
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const submitContact = useServerFn(submitContactForm);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
@@ -71,29 +73,16 @@ export function ContactForm() {
 
     setErrors({});
     setSending(true);
-
-    const v = parsed.data;
-    const programLabel =
-      t.form.programOptions[PROGRAM_KEYS.indexOf(v.program as ProgramKey)] ?? v.program;
-    const subject = `New enquiry — ${programLabel} — ${v.name}`;
-    const body = [
-      `Name: ${v.name}`,
-      `Email: ${v.email}`,
-      `Phone: ${v.phone || "—"}`,
-      `Program: ${programLabel}`,
-      "",
-      "Message:",
-      v.message,
-    ].join("\n");
-
-    const href = `mailto:${PAGE_EMAIL}?cc=${encodeURIComponent(
-      FOUNDER_EMAIL,
-    )}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = href;
-    toast.success(t.form.toastSuccess);
-    form.reset();
-    setSending(false);
+    try {
+      await submitContact({ data: parsed.data });
+      toast.success(t.form.toastSuccess);
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      toast.error(t.form.toastSendError);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
