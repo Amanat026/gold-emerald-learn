@@ -2,10 +2,9 @@ import { useMemo, useState } from "react";
 import { z } from "zod";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { useLanguage } from "@/lib/i18n";
-
-const PAGE_EMAIL = "englishcore26@gmail.com";
-const FOUNDER_EMAIL = "amanatullah263@gmail.com";
+import { submitContactForm } from "@/lib/contact.functions";
 
 const PROGRAM_KEYS = ["kids", "academic", "professional"] as const;
 type ProgramKey = (typeof PROGRAM_KEYS)[number];
