@@ -11,7 +11,7 @@ const PROGRAM_LABELS: Record<string, string> = {
 export interface ContactEmailInput {
   name: string;
   email: string;
-  phone?: string;
+  phone?: string | undefined;
   program: string;
   message: string;
 }
